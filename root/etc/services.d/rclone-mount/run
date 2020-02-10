@@ -2,6 +2,9 @@
 
 
 echo "Mounting remote with rclone"
+
+mkdir -p /mnt/gdrive
+
 rclone mount --config /rclone/config/rclone.conf gcache: /mnt/gdrive \
    --allow-other --allow-non-empty --dir-cache-time 672h \
    --vfs-cache-max-age 675h --vfs-read-chunk-size 128M   \

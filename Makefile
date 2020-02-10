@@ -1,4 +1,4 @@
-IMAGE := bonny1992/plex-rclone
+IMAGE := bonny1992/jellyfin-rclone
 
 test:
 	true

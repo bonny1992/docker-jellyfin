@@ -1,5 +1,5 @@
 IMAGE := bonny1992/jellyfin-rclone
-$(eval RELEASE = $(shell curl -sX GET "https://api.github.com/repos/jellyfin/jellyfin/releases/latest" | awk '/tag_name/{print $4;exit}' FS='[""]' | sed 's/^v//g'))
+$(eval RELEASE = $(shell curl -sX GET "https://api.github.com/repos/jellyfin/jellyfin/releases/latest" | awk '/tag_name/{print $4;exit}' FS='[""]'))
 
 echo:
 	@echo RELEASE is $(RELEASE)

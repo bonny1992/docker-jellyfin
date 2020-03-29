@@ -1,13 +1,18 @@
 IMAGE := bonny1992/jellyfin-rclone
+$(eval RELEASE = $(curl -sX GET "https://api.github.com/repos/jellyfin/jellyfin/releases/latest" | awk '/tag_name/{print $4;exit}' FS='[""]' | sed 's/^v//g'))
+
+echo:
+	@echo RELEASE is $(RELEASE)
 
 test:
 	true
 
 image:
-	docker build -t $(IMAGE) .
+	docker build -t $(IMAGE):latest -t $(IMAGE):$(RELEASE) .
 
 push-image:
-	docker push $(IMAGE)
+	docker push $(IMAGE):$(RELEASE)
+	docker push $(IMAGE):latest
 
 
-.PHONY: image push-image test
+.PHONY: all image push-image test
